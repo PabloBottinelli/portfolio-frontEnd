@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; 
+}
+/* NAV */
+.navbar{
+    background-color: rgb(245, 240, 240);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.relleno{
+    width: 100%;
+    height: 56px;
+}
+.navbar-brand{
+    font-family: 'Bungee Spice', cursive;
+}
+.ig-logo{
+    width: 38px;
+    height: auto;
+    margin-right: 10px;
+}
+.btn{
+    background-color:#19bc4a;
+    border: none;
+}
+.btn:hover{
+    background-color: #16a340;
+}
+/* BANNER */
+.section{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 98%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.banner {
+    height: 300px;
+    background-color: #f2f2f2;
+    text-align: center;
+    position: relative;
+}
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+}
+  
+/* INFO DE PERFIL */
+.info{
+    position: relative;
+    top: -110px;
+    padding-bottom: -90px;
+}
+.info-left{
+    text-align: left;
+    width: 50%;
+    float: left;
+    padding-left: 50px;
+}
+.info-left h2{
+    margin-bottom: 15px;
+}
+.info-left h3{
+    font-size: 25px;
+    margin-bottom: 13px;
+}
+.info-left h4{
+    font-size: 18px;
+}
+.info-left img{
+    width: 190px;
+    border-radius: 100%;
+}
+.info-right{
+    float: right;
+    width: 50%;
+    text-align: left;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    vertical-align: middle;
+    padding-top: 180px;
+    margin-right: 40px;
+}
+.estudios{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.info-right img{
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+.info-right h4{
+    width: 70%;
+    display: inline;
+    font-size: 20px;
+}
+
+/* SOBRE MI */
+.about, .experience, .education, .skills, .proyects{
+    padding: 50px;
+}
+.about p{
+    font-size: 20px;
+}
+
+/* EXPERIENCIA */
+.card{
+    border: none;
+}
+.img-fluid{
+    width: 80px;
+    margin-top: 18px;
+}
+section h2{
+    margin-bottom: 25px;
+}
+.card-text{
+    margin-bottom: 5px;
+}
+
+/* SKILLS */
+.progress{
+    margin-bottom: 20px;
+    background-color: #e0e2e4;
+}
+.progress:last-of-type{
+    margin-bottom: 0;
+}
+.skills h3{
+    font-family: 'Kanit', sans-serif;
+}
+
+/* PROYECTOS */
+.proyect-card{
+    background-color: #ebecee;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.card-body p{
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer{
+    background-color: rgb(245, 240, 240);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: 10px;
+    text-align: center;
+}
+footer p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+footer img{
+    width: 35px;
+    padding-bottom: 15px;
+}
