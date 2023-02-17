@@ -1,0 +1,17 @@
+<section class="education section">
+    <h2><strong>Educación</strong></h2>
+    <div class="card mb-3" style="max-width: 540px;" *ngFor="let ed of education">
+      <div class="row g-0">
+        <div class="col-md-2">
+          <img src="{{ ed.img }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-10">
+          <div class="card-body">
+            <h5 class="card-title"><strong>{{ ed.institucion }}</strong></h5>
+            <p class="card-text">{{ ed.titulo }}</p>
+            <p class="card-text"><small class="text-muted">{{ ed.fechas }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

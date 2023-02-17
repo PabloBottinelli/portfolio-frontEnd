@@ -1,0 +1,9 @@
+<section class="skills section">
+  <h2><strong>Hard & Soft Skills</strong></h2>
+  <div *ngFor="let skill of skills" class="skill">
+    <h3>{{ skill.name }}</h3>
+    <div class="progress w-50" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar progress-bar-striped {{ skill.class }} progress-bar-animated " style="width: {{ skill.width }}"></div>
+    </div>
+  </div>
+</section>

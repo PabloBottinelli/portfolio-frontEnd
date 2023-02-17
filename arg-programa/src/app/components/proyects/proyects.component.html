@@ -1,0 +1,10 @@
+<section class="proyects section">
+    <h2><strong>Mis Proyectos</strong></h2>
+    <div class="card w-75 mb-3 proyect-card" *ngFor="let proyect of proyects">
+      <div class="card-body">
+        <h5 class="card-title"><strong>{{ proyect.name }}</strong></h5>
+        <p class="card-text">{{ proyect.descripcion}}</p>
+        <a href="{{ proyect.link }}" class="btn btn-primary">Ver</a>
+      </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<section class="profile-info section">
+    <div class="banner">
+      <img src="{{ banner.banner }}" alt="Banner Image">
+      <h1>{{ banner.title }}</h1>
+    </div>
+    <div class="info">
+      <div class="info-left">
+        <img src="{{ banner.img }}" alt="Profile Photo">
+        <h2><strong>{{ banner.name }}</strong></h2>
+        <h3>{{ banner.trabajo }}</h3>
+        <h4>{{ banner.ubicacion }}</h4>
+      </div>
+      <div class="info-right">
+        <div class="estudios" *ngFor="let estudio of banner.estudios">
+          <img src="{{estudio.img}}" alt="Logo Pellegrini">
+          <h4>{{estudio.title}}</h4>
+        </div>        
+      </div>
+    </div>
+  </section>

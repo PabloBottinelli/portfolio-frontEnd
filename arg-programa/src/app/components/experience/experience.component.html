@@ -1,0 +1,17 @@
+<section class="experience section">
+    <h2><strong>Experiencia</strong></h2>
+    <div class="card mb-3" style="max-width: 540px;" *ngFor="let exp of experience">
+      <div class="row g-0">
+        <div class="col-md-2">
+          <img src="{{exp.img}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-10">
+          <div class="card-body">
+            <h5 class="card-title"><strong>{{ exp.cargo }}</strong></h5>
+            <p class="card-text">{{ exp.empresa }}</p>
+            <p class="card-text"><small class="text-muted">{{ exp.fechas }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -140,11 +140,11 @@ section h2{
 
 /* SKILLS */
 .progress{
-    margin-bottom: 20px;
     background-color: #e0e2e4;
 }
-.progress:last-of-type{
-    margin-bottom: 0;
+
+.skill{
+    padding-bottom: 20px;
 }
 .skills h3{
     font-family: 'Kanit', sans-serif;
@@ -163,7 +163,7 @@ section h2{
 footer{
     background-color: rgb(245, 240, 240);
     border-top: 1px solid rgba(0, 0, 0, 0.08);
-    margin-top: 10px;
+    margin-top: 10px; 
     text-align: center;
 }
 footer p{
@@ -172,6 +172,30 @@ footer p{
     font-size: 20px;
 }
 footer img{
-    width: 35px;
-    padding-bottom: 15px;
+    width: 45px;
+    padding: 5px;
+    padding-bottom: 20px; 
+}
+
+/* 404 */   
+.error404 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+.error404 div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.error404 h1{
+    color: white;
+    font-size: 120px;
+}
+.error404 h2{
+    color: white;
+    font-size: 90px;
 }
