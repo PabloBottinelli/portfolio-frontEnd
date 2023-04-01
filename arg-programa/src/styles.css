@@ -23,6 +23,10 @@
     width: 38px;
     height: auto;
     margin-right: 10px;
+    transition: all 500ms ease;
+}
+.ig-logo:hover{
+    transform: scale(1.2);
 }
 .btn{
     background-color:#19bc4a;
@@ -51,15 +55,6 @@
     height: 100%;
     object-fit: cover;
 }
-.banner h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
-}
   
 /* INFO DE PERFIL */
 .info{
@@ -74,7 +69,7 @@
     padding-left: 50px;
 }
 .info-left h2{
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 .info-left h3{
     font-size: 25px;
@@ -86,6 +81,7 @@
 .info-left img{
     width: 190px;
     border-radius: 100%;
+    margin-bottom: 15px;
 }
 .info-right{
     float: right;
@@ -114,7 +110,9 @@
     display: inline;
     font-size: 20px;
 }
-
+.profile-info{
+    height: 600px;
+}
 /* SOBRE MI */
 .about, .experience, .education, .skills, .proyects{
     padding: 50px;
@@ -171,11 +169,6 @@ footer p{
     padding-bottom: 10px;
     font-size: 20px;
 }
-footer img{
-    width: 45px;
-    padding: 5px;
-    padding-bottom: 20px; 
-}
 
 /* 404 */   
 .error404 img{
@@ -198,4 +191,72 @@ footer img{
 .error404 h2{
     color: white;
     font-size: 90px;
+}
+
+/* Edit Buttons */
+.edit-buttons div{
+    text-align: right;
+}
+.edit-buttons button{
+    border: none;
+    background-color:transparent;
+}
+button{
+    transition: all 500ms ease;
+}
+.animated:hover{
+    color: rgb(100, 100, 100);
+    transform: scale(1.15);
+}
+button i{
+    font-size: 25px;
+    padding: 10px;
+}
+.skill-buttons div{
+    width: 5%;
+    float: right;
+}
+.proyects-buttons button{
+    border: none;
+    background-color:transparent;
+}
+.card-body .content{
+    display: inline-block;
+    width: 80%;
+}
+.card-body .proyects-buttons{
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+}
+.banner-button{
+    position: absolute;
+    color: white;
+    z-index: 99;
+    background-color: transparent;
+    border: none;
+    float: right;
+    left: 95%;
+    top: 10%;
+}
+.banner-button:hover{
+    color: white;
+}
+
+/* Edit Forms */
+.edit-form label{
+    display: block;
+}
+.edit-form{
+    width: 80%;
+    margin: auto;
+}
+.edit-form input{
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.349);
+    padding: 6px;
+    font-size: 15px;
+    border-radius: 10px;
+    padding-left: 10px;
 }

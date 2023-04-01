@@ -1,0 +1,7 @@
+input[type='textarea']{
+    border: 10px;
+    width: 80%;
+}
+.form-control{
+    resize: none;
+}

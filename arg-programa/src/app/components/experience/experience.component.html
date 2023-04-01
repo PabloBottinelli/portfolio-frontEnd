@@ -1,17 +1,109 @@
 <section class="experience section">
-    <h2><strong>Experiencia</strong></h2>
-    <div class="card mb-3" style="max-width: 540px;" *ngFor="let exp of experience">
+    <h2><strong>Experiencia</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-exp-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"><i class="fa-regular fa-plus"></i></button></h2>
+    <div class="card mb-3" *ngFor="let exp of experiences">
       <div class="row g-0">
-        <div class="col-md-2">
+        <div class="col-md-1">
           <img src="{{exp.img}}" class="img-fluid rounded-start" alt="...">
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
           <div class="card-body">
-            <h5 class="card-title"><strong>{{ exp.cargo }}</strong></h5>
-            <p class="card-text">{{ exp.empresa }}</p>
-            <p class="card-text"><small class="text-muted">{{ exp.fechas }}</small></p>
+            <h5 class="card-title"><strong>{{ exp.post }}</strong></h5>
+            <p class="card-text">{{ exp.company }}</p>
+            <p class="card-text"><small class="text-muted">{{ exp.dates }}</small></p>
+          </div>
+        </div>
+        <div class="col-md-2 edit-buttons">
+          <div>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-exp-modal{{exp.id}}" (click)="modificar(exp.id)"><i class="fa-regular fa-pen-to-square"></i></button>
+          </div>
+          <div>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-exp-modal{{exp.id}}"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL -->
+      <div class="modal fade" id="edit-exp-modal{{exp.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Editar datos de Experiencia</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]='editarExperiencia' class="edit-form" (ngSubmit)="guardarExperiencia(editarExperiencia.value)">
+                  <input type="hidden" formControlName="id">
+
+                  <label for="company"><strong>Empresa:</strong></label>
+                  <input type="text" name="company" id="company{{exp.id}}" formControlName="company" placeholder="Empresa">
+      
+                  <label for="img"><strong>Imagen:</strong></label>
+                  <input type="text" name="img" id="img_exp{{exp.id}}" formControlName="img" placeholder="Imagen">
+                  
+                  <label for="post"><strong>Puesto:</strong></label>
+                  <input type="text" name="post" id="post_exp{{exp.id}}" formControlName="post" placeholder="Puesto">
+                  
+                  <label for="dates"><strong>Fechas</strong></label>
+                  <input type="text" name="dates" id="dates_exp{{exp.id}}" formControlName="dates" placeholder="Fechas">
+
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="delete-exp-modal{{exp.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Borrar datos de Experiencia</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Esto eliminará los datos de {{exp.company}} permanentemente</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" (click)="borrarExperiencia(exp.id)" data-bs-dismiss="modal">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="create-exp-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Experiencia</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="editarExperiencia" class="edit-form" (ngSubmit)="crearExperiencia(editarExperiencia.value)">
+                  <label for="company"><strong>Empresa:</strong></label>
+                  <input type="text" name="company" id="create_company_exp" placeholder="Empresa" formControlName="company">
+      
+                  <label for="img"><strong>Imagen:</strong></label>
+                  <input type="text" name="img" id="create_img_exp" placeholder="Imagen" formControlName="img">
+                  
+                  <label for="post"><strong>Puesto:</strong></label>
+                  <input type="text" name="post" id="create_post_exp" placeholder="Puesto" formControlName="post">
+                  
+                  <label for="dates"><strong>Fechas</strong></label>
+                  <input type="text" name="dates" id="create_dates_exp" placeholder="Fechas" formControlName="dates">
+
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  

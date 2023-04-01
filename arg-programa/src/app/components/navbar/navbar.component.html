@@ -1,10 +1,19 @@
 <nav class="navbar fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand">PABLO BOTTINELLI</a>
+      
+      <a class="navbar-brand">{{ datos?.name }}</a>
       <form class="d-flex" role="search">
-        <a href="https://www.linkedin.com/in/pablo-bottinelli/" target="_blank"><img class='ig-logo' src="assets/linkedin.png" alt="LinkedIn Logo"></a>
-        <a href="https://www.instagram.com/bottinellipablo/" target="_blank"><img class='ig-logo' src="assets/instagram.png" alt="Instagram Logo"></a>
-        <button class="btn btn-success" type="submit">Login</button>
+        <a href="{{datos?.linkedin}}" target="_blank"><img class='ig-logo' src="assets/linkedin.png" alt="LinkedIn Logo"></a>
+        <a href="{{datos?.instagram}}" target="_blank"><img class='ig-logo' src="assets/instagram.png" alt="Instagram Logo"></a>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Login
+        </button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal">
+          Logout
+        </button>
       </form>
     </div>
 </nav>
+
+<!-- Modal -->
+<app-login></app-login>

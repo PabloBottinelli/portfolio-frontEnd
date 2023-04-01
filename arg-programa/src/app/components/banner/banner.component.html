@@ -1,20 +1,66 @@
 <section class="profile-info section">
     <div class="banner">
-      <img src="{{ banner.banner }}" alt="Banner Image">
-      <h1>{{ banner.title }}</h1>
+      <img src="{{ banner?.banner_img }}" alt="Banner Image">
+      <button class="animated banner-button" type="button" data-bs-toggle="modal" data-bs-target="#edit-user-modal" (click)="modificar()">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </button>
     </div>
     <div class="info">
       <div class="info-left">
-        <img src="{{ banner.img }}" alt="Profile Photo">
-        <h2><strong>{{ banner.name }}</strong></h2>
-        <h3>{{ banner.trabajo }}</h3>
-        <h4>{{ banner.ubicacion }}</h4>
+        <img src="{{ banner?.profile_img }}" alt="Profile Photo">
+        <h2><strong>{{ banner?.name }}</strong></h2>
+        <h3>{{ banner?.post }}</h3>
+        <h4>{{ banner?.address }}</h4>
       </div>
       <div class="info-right">
-        <div class="estudios" *ngFor="let estudio of banner.estudios">
-          <img src="{{estudio.img}}" alt="Logo Pellegrini">
-          <h4>{{estudio.title}}</h4>
+        <div class="estudios" *ngFor="let estudio of educaciones">
+          <img src="{{ estudio.img }}" alt="Logo Pellegrini">
+          <h4>{{ estudio.title }}</h4>
         </div>        
       </div>
     </div>
-  </section>
+</section>
+
+<div class="modal fade" id="edit-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar datos de Usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]='editarBanner' class="edit-form" (ngSubmit)="guardarBanner(editarBanner.value)">
+            <input type="hidden" formControlName="id">
+
+            <input type="hidden" formControlName="about">
+
+            <label for="name"><strong>Nombre:</strong></label>
+            <input type="text" name="name" id="name" placeholder="Nombre" formControlName="name">
+
+            <label for="address"><strong>Direccion:</strong></label>
+            <input type="text" name="address" id="address" placeholder="Direccion" formControlName="address">
+            
+            <label for="post"><strong>Puesto:</strong></label>
+            <input type="text" name="post" id="post"  placeholder="Puesto" formControlName="post">
+            
+            <label for="profile_img"><strong>Imagen de perfil:</strong></label>
+            <input type="text" name="profile_img" id="profile_img" placeholder="Imagen de perfil" formControlName="profile_img">
+            
+            <label for="banner_img"><strong>Imagen de banner:</strong></label>
+            <input type="text" name="banner_img" id="banner_img" placeholder="Imagen de banner" formControlName="banner_img">
+            
+            <label for="linkedin"><strong>Url de linkedin:</strong></label>
+            <input type="text" name="linkedin" id="linkedin"  placeholder="Url de linkedin" formControlName="linkedin">
+            
+            <label for="instagram"><strong>Url de instagram:</strong></label>
+            <input type="text" name="instagram" id="instagram"  placeholder="Url de instagram" formControlName="instagram">
+
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,97 @@
 <section class="proyects section">
-    <h2><strong>Mis Proyectos</strong></h2>
-    <div class="card w-75 mb-3 proyect-card" *ngFor="let proyect of proyects">
+    <h2><strong>Mis Proyectos</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-proyect-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"><i class="fa-regular fa-plus"></i></button></h2>
+    <div class="card w-75 mb-5 proyect-card" *ngFor="let proyect of proyects">
       <div class="card-body">
-        <h5 class="card-title"><strong>{{ proyect.name }}</strong></h5>
-        <p class="card-text">{{ proyect.descripcion}}</p>
-        <a href="{{ proyect.link }}" class="btn btn-primary">Ver</a>
+        <div class="content">
+          <h5 class="card-title"><strong>{{ proyect.name }}</strong></h5>
+          <p class="card-text">{{ proyect.description}}</p>
+          <a href="{{ proyect.link }}" class="btn btn-primary" target="_blank">Ver</a>
+        </div>
+        <div class="proyects-buttons">
+          <div>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-proyect-modal{{proyect.id}}" (click)="modificar(proyect.id)"><i class="fa-regular fa-pen-to-square"></i></button>
+          </div>
+          <div>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-proyect-modal{{proyect.id}}"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL -->
+      <div class="modal fade" id="edit-proyect-modal{{proyect.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Editar datos de Proyecto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]='editarProyecto' class="edit-form" (ngSubmit)="guardarProyecto(editarProyecto.value)">
+                  <input type="hidden" formControlName="id">
+
+                  <label for="name"><strong>Nombre del proyecto:</strong></label>
+                  <input type="text" name="name" id="name_proyect{{proyect.id}}" formControlName="name" placeholder="Nombre del proyecto">
+
+                  <label for="description"><strong>Descripción:</strong></label>
+                  <input type="text" name="description" id="description{{proyect.description}}" formControlName="description" placeholder="Descripcion">
+                  
+                  <label for="link"><strong>Link:</strong></label>
+                  <input type="text" name="link" id="link{{proyect.link}}" formControlName="link" placeholder="Link">
+
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="delete-proyect-modal{{proyect.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Borrar datos de Proyecto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Esto eliminará los datos de {{proyect.name}} permanentemente</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="borrarProyecto(proyect.id)">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="create-proyect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Proyecto</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]='editarProyecto' class="edit-form" (ngSubmit)="crearProyecto(editarProyecto.value)">
+                  <label for="name"><strong>Nombre del proyecto:</strong></label>
+                  <input type="text" name="name" id="create_name_proyect" placeholder="Nombre del proyecto" formControlName="name">
+
+                  <label for="description"><strong>Descripción:</strong></label>
+                  <input type="text" name="description" id="create_description_proyect" placeholder="Descripcion" formControlName="description">
+                  
+                  <label for="link"><strong>Link:</strong></label>
+                  <input type="text" name="link" id="create_link_proyect" placeholder="Link" formControlName="link">
+
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 </section>

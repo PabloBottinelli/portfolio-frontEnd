@@ -1,4 +1,42 @@
 <section class="about section">
-    <h2><strong>Acerca de mi</strong></h2>
-    <p>{{ about }}</p>
+    <h2><strong>Acerca de mi</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#edit-about-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="modificar()"><i class="fa-regular fa-pen-to-square"></i></button></h2>
+    <p>{{ banner?.about }}</p>
 </section>
+
+<div class="modal fade" id="edit-about-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Acerca De</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]='editarAbout' class="edit-form" (ngSubmit)="guardarAbout(editarAbout.value)">
+            <label for="about"><strong>Acerca de:</strong></label>
+            <textarea type="textarea" name="about" id="about" placeholder="Acerca de" class="form-control" rows="10" maxlength="2000" formControlName="about"></textarea>
+          
+            <input type="hidden" formControlName="id">
+
+            <input type="hidden" formControlName="name">
+
+            <input type="hidden" formControlName="address">
+            
+            <input type="hidden" formControlName="post">
+            
+            <input type="hidden" formControlName="profile_img">
+            
+            <input type="hidden" formControlName="banner_img">
+            
+            <input type="hidden" formControlName="linkedin">
+            
+            <input type="hidden" formControlName="instagram">
+
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
