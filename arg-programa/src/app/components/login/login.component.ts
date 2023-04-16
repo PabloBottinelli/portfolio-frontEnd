@@ -8,8 +8,8 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  userLogged:any;
   form:FormGroup;
+  isUserLogged:boolean = false;
   constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.form=this.formBuilder.group(
       {
@@ -18,13 +18,16 @@ export class LoginComponent {
       }
     )
   }
-  recargarDatos() {
-    this.autenticacionService.estaLogueado().subscribe(data =>{
-      this.userLogged = data;
-    })
-  }
+  
   ngOnInit(): void {
-    this.recargarDatos();
+    console.log(this.isUserLogged);
+    this.isUserLogged = this.autenticacionService.isUserLogged();
+    console.log(this.isUserLogged);
+  }
+
+  logout(){
+    this.autenticacionService.logout();
+    console.log(this.isUserLogged);
   }
 
   get Username(){
@@ -36,11 +39,9 @@ export class LoginComponent {
   }
 
   onSubmit(){
-    this.autenticacionService.login(this.Username?.value, this.Password?.value).subscribe(data=>{
-      this.userLogged=data;
-      console.log(this.userLogged);
-      this.recargarDatos();
-    })
+    this.autenticacionService.login(this.Username?.value, this.Password?.value).subscribe(data => {
+      
+    });
+    console.log(this.isUserLogged);
   }
-  
 }

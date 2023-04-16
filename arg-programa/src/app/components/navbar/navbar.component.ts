@@ -8,11 +8,19 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
 })
 export class NavbarComponent implements OnInit{
   datos:any;
-  constructor(private datosBanner:BannerAboutService){}
+  isUserLogged:boolean = false;
+
+  constructor(private datosBanner:BannerAboutService, private autenticacionService:AutenticacionService){}
 
   ngOnInit(): void {
     this.datosBanner.obtenerDatos().subscribe(data => {
       this.datos=data[0];
     });
+  }
+
+  logout(){
+    console.log(this.isUserLogged);
+    this.autenticacionService.logout();
+    console.log(this.isUserLogged);
   }
 }

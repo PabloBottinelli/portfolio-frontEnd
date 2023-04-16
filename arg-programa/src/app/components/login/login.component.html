@@ -2,11 +2,11 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="isUserLogged">Login</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="logout()">
           <div class="mb-3">
             <label for="usuario" class="form-label">Usuario</label>
             <input type="text" [ngClass]="{'is-invalid': Username?.errors && Username?.touched, 'is-valid': !Username?.errors && Username?.touched}" formControlName="username" class="form-control" id="usuario">
