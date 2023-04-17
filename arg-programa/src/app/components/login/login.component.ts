@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
-
+import { NavbarComponent } from '../navbar/navbar.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,7 @@ import { AutenticacionService } from 'src/app/services/autenticacion.service';
 export class LoginComponent {
   form:FormGroup;
   isUserLogged:boolean = false;
-  constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
+  constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService, private NavbarComponent:NavbarComponent){
     this.form=this.formBuilder.group(
       {
         username:['',[Validators.required]],
@@ -18,16 +18,16 @@ export class LoginComponent {
       }
     )
   }
-  
+
   ngOnInit(): void {
-    console.log(this.isUserLogged);
+    console.log('init ', this.isUserLogged);
     this.isUserLogged = this.autenticacionService.isUserLogged();
-    console.log(this.isUserLogged);
+    console.log('isUserLogged init ', this.isUserLogged);
   }
 
   logout(){
     this.autenticacionService.logout();
-    console.log(this.isUserLogged);
+    console.log('logout ', this.isUserLogged);
   }
 
   get Username(){
@@ -40,8 +40,8 @@ export class LoginComponent {
 
   onSubmit(){
     this.autenticacionService.login(this.Username?.value, this.Password?.value).subscribe(data => {
-      
+      this.NavbarComponent.recargarDatos();
     });
-    console.log(this.isUserLogged);
+    console.log('login ', this.isUserLogged);
   }
 }

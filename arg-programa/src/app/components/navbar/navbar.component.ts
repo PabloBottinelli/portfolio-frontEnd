@@ -12,15 +12,20 @@ export class NavbarComponent implements OnInit{
 
   constructor(private datosBanner:BannerAboutService, private autenticacionService:AutenticacionService){}
 
-  ngOnInit(): void {
+  recargarDatos() {
     this.datosBanner.obtenerDatos().subscribe(data => {
       this.datos=data[0];
     });
+    this.isUserLogged = this.autenticacionService.isUserLogged();
+  }
+
+  ngOnInit(): void {
+    this.recargarDatos();   
   }
 
   logout(){
-    console.log(this.isUserLogged);
     this.autenticacionService.logout();
-    console.log(this.isUserLogged);
+    this.recargarDatos();   
+    console.log('logout navbar', this.isUserLogged);
   }
 }

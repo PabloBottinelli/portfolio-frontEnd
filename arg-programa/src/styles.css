@@ -28,11 +28,11 @@
 .ig-logo:hover{
     transform: scale(1.2);
 }
-.btn{
+.btn-login{
     background-color:#19bc4a;
     border: none;
 }
-.btn:hover{
+.btn-login:hover{
     background-color: #16a340;
 }
 /* BANNER */

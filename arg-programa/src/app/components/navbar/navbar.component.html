@@ -5,10 +5,10 @@
       <form class="d-flex" role="search">
         <a href="{{datos?.linkedin}}" target="_blank"><img class='ig-logo' src="assets/linkedin.png" alt="LinkedIn Logo"></a>
         <a href="{{datos?.instagram}}" target="_blank"><img class='ig-logo' src="assets/instagram.png" alt="Instagram Logo"></a>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn btn-success btn-login" data-bs-toggle="modal" data-bs-target="#loginModal" *ngIf="!isUserLogged">
           Login
         </button>
-        <button type="button" class="btn btn-danger" (ngClick)="logout()">
+        <button type="button" class="btn btn-danger" (click)="logout()" *ngIf="isUserLogged">
           Logout
         </button>
       </form>
