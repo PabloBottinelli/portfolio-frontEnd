@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProyectsService } from 'src/app/services/proyects.service';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-proyects',
@@ -10,7 +11,9 @@ import { ProyectsService } from 'src/app/services/proyects.service';
 export class ProyectsComponent implements OnInit{
   proyects:any;
   editarProyecto:FormGroup;
-  constructor(private datosProy:ProyectsService, private formBuilder:FormBuilder){
+  isUserLogged:boolean = false;
+
+  constructor(private datosProy:ProyectsService, private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.editarProyecto=this.formBuilder.group(
       {
         id:[''],
@@ -25,6 +28,7 @@ export class ProyectsComponent implements OnInit{
     this.datosProy.obtenerDatos().subscribe(data => {
       this.proyects=data;
     });
+    this.isUserLogged = this.autenticacionService.isUserLogged();
   }
 
   ngOnInit(): void {

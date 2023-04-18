@@ -1,7 +1,7 @@
 <section class="profile-info section">
     <div class="banner">
       <img src="{{ banner?.banner_img }}" alt="Banner Image">
-      <button class="animated banner-button" type="button" data-bs-toggle="modal" data-bs-target="#edit-user-modal" (click)="modificar()">
+      <button class="animated banner-button" type="button" data-bs-toggle="modal" data-bs-target="#edit-user-modal" (click)="modificar()" *ngIf="isUserLogged">
         <i class="fa-regular fa-pen-to-square"></i>
       </button>
     </div>
@@ -21,7 +21,7 @@
     </div>
 </section>
 
-<div class="modal fade" id="edit-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
@@ -59,7 +59,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

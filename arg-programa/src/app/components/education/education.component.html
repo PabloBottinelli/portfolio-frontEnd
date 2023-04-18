@@ -1,5 +1,5 @@
 <section class="education section">
-    <h2><strong>Educación</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-education-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"><i class="fa-regular fa-plus"></i></button></h2>
+    <h2><strong>Educación</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-education-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"  *ngIf="isUserLogged"><i class="fa-regular fa-plus"></i></button></h2>
     <div class="card mb-3" *ngFor="let ed of educations">
       <div class="row g-0">
         <div class="col-md-1">
@@ -14,16 +14,16 @@
         </div> 
         <div class="col-md-2 edit-buttons">
           <div>
-            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-education-modal{{ed.id}}" (click)="modificar(ed.id)"><i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-education-modal{{ed.id}}" (click)="modificar(ed.id)"  *ngIf="isUserLogged"><i class="fa-regular fa-pen-to-square"></i></button>
           </div>
           <div>
-            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-education-modal{{ed.id}}"><i class="fa-regular fa-trash-can"></i></button>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-education-modal{{ed.id}}"  *ngIf="isUserLogged"><i class="fa-regular fa-trash-can"></i></button>
           </div>
         </div>
       </div>
 
       <!-- MODAL -->
-      <div class="modal fade" id="edit-education-modal{{ed.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="edit-education-modal{{ed.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -50,13 +50,13 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade" id="delete-education-modal{{ed.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="delete-education-modal{{ed.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -67,14 +67,14 @@
               <p>Esto eliminará los datos de {{ed.institution}} permanentemente</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
               <button type="button" class="btn btn-primary" (click)="borrarEducacion(ed.id)" data-bs-dismiss="modal">Confirmar</button>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="modal fade" id="create-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="create-education-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -95,7 +95,7 @@
                   <label for="dates"><strong>Fechas</strong></label>
                   <input type="text" name="dates" id="create_dates_ed" placeholder="Fechas" formControlName="dates">
 
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Crear</button>
+                  <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Crear</button>
               </form>
             </div>
             <div class="modal-footer">

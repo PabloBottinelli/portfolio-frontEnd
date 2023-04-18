@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
-import { NavbarComponent } from '../navbar/navbar.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 export class LoginComponent {
   form:FormGroup;
   isUserLogged:boolean = false;
-  constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService, private NavbarComponent:NavbarComponent){
+  constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.form=this.formBuilder.group(
       {
         username:['',[Validators.required]],
@@ -25,11 +25,6 @@ export class LoginComponent {
     console.log('isUserLogged init ', this.isUserLogged);
   }
 
-  logout(){
-    this.autenticacionService.logout();
-    console.log('logout ', this.isUserLogged);
-  }
-
   get Username(){
     return this.form.get('username');
   }
@@ -40,7 +35,7 @@ export class LoginComponent {
 
   onSubmit(){
     this.autenticacionService.login(this.Username?.value, this.Password?.value).subscribe(data => {
-      this.NavbarComponent.recargarDatos();
+      location.reload();
     });
     console.log('login ', this.isUserLogged);
   }

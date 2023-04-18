@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerAboutService } from 'src/app/services/banner-about.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-about',
@@ -10,8 +11,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AboutComponent implements OnInit{
   banner:any;
   editarAbout:FormGroup;
+  isUserLogged:boolean = false;
 
-  constructor(private datosBanner:BannerAboutService, private formBuilder:FormBuilder){
+  constructor(private datosBanner:BannerAboutService, private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.editarAbout=this.formBuilder.group(
       {
         id:[''],
@@ -31,6 +33,7 @@ export class AboutComponent implements OnInit{
     this.datosBanner.obtenerDatos().subscribe(data => {
       this.banner=data[0];
     });
+    this.isUserLogged = this.autenticacionService.isUserLogged();
   }
 
   ngOnInit(): void {

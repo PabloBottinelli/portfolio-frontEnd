@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-experience',
@@ -11,7 +12,9 @@ import { ExperienceService } from 'src/app/services/experience.service';
 export class ExperienceComponent implements OnInit{
   experiences:any;
   editarExperiencia:FormGroup;
-  constructor(private datosExp:ExperienceService, private formBuilder:FormBuilder){
+  isUserLogged:boolean = false;
+
+  constructor(private datosExp:ExperienceService, private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.editarExperiencia=this.formBuilder.group(
       {
         id:[''],
@@ -27,6 +30,7 @@ export class ExperienceComponent implements OnInit{
     this.datosExp.obtenerDatos().subscribe(data => {
       this.experiences=data;
     });
+    this.isUserLogged = this.autenticacionService.isUserLogged();
   }
 
   ngOnInit(): void {

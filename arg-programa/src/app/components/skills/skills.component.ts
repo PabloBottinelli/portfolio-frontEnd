@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsService } from 'src/app/services/skills.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
+
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
@@ -9,7 +11,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SkillsComponent implements OnInit{
   skills:any;
   editarSkill:FormGroup;
-  constructor(private datosSkills:SkillsService, private formBuilder:FormBuilder){
+  isUserLogged:boolean = false;
+
+  constructor(private datosSkills:SkillsService, private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.editarSkill=this.formBuilder.group(
       {
         id:[''],
@@ -24,6 +28,7 @@ export class SkillsComponent implements OnInit{
     this.datosSkills.obtenerDatos().subscribe(data => {
       this.skills=data;
     });
+    this.isUserLogged = this.autenticacionService.isUserLogged();
   }
 
   ngOnInit(): void {

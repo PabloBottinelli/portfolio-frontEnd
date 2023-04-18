@@ -1,12 +1,12 @@
 <section class="skills section">
-  <h2><strong>Hard & Soft Skills</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-skill-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"><i class="fa-regular fa-plus"></i></button></h2>
+  <h2><strong>Hard & Soft Skills</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-skill-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"  *ngIf="isUserLogged"><i class="fa-regular fa-plus"></i></button></h2>
   <div *ngFor="let skill of skills" class="skill">
     <div class="edit-buttons skill-buttons">
       <div>
-        <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-skill-modal{{skill.id}}" (click)="modificar(skill.id)"><i class="fa-regular fa-pen-to-square"></i></button>
+        <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-skill-modal{{skill.id}}" (click)="modificar(skill.id)"  *ngIf="isUserLogged"><i class="fa-regular fa-pen-to-square"></i></button>
       </div>
       <div>
-        <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-skill-modal{{skill.id}}"><i class="fa-regular fa-trash-can"></i></button>
+        <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-skill-modal{{skill.id}}"  *ngIf="isUserLogged"><i class="fa-regular fa-trash-can"></i></button>
       </div>
     </div>
     <h3>{{ skill.name }}</h3>
@@ -16,7 +16,7 @@
     </div>
 
     <!-- MODAL -->
-    <div class="modal fade" id="edit-skill-modal{{skill.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit-skill-modal{{skill.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
@@ -40,13 +40,13 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal fade" id="delete-skill-modal{{skill.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete-skill-modal{{skill.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
@@ -57,14 +57,14 @@
             <p>Esto eliminará los datos de {{skill.name}} permanentemente</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
             <button type="button" class="btn btn-primary" (click)="borrarSkill(skill.id)" data-bs-dismiss="modal">Confirmar</button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="modal fade" id="create-skill-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="create-skill-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
@@ -86,7 +86,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>

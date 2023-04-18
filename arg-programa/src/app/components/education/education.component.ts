@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EducationService } from 'src/app/services/education.service';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-education',
@@ -10,7 +11,9 @@ import { EducationService } from 'src/app/services/education.service';
 export class EducationComponent implements OnInit{
   educations:any;
   editarEducacion:FormGroup;
-  constructor(private datosEducacion:EducationService, private formBuilder:FormBuilder){
+  isUserLogged:boolean = false;
+
+  constructor(private datosEducacion:EducationService, private formBuilder:FormBuilder, private autenticacionService:AutenticacionService){
     this.editarEducacion=this.formBuilder.group(
       {
         id:[''],
@@ -25,6 +28,7 @@ export class EducationComponent implements OnInit{
     this.datosEducacion.obtenerDatos().subscribe(data => {
       this.educations=data;
     });
+    this.isUserLogged = this.autenticacionService.isUserLogged();
   }
 
   ngOnInit(): void {

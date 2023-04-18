@@ -1,5 +1,5 @@
 <section class="proyects section">
-    <h2><strong>Mis Proyectos</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-proyect-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()"><i class="fa-regular fa-plus"></i></button></h2>
+    <h2><strong>Mis Proyectos</strong> <button class="animated" type="button" data-bs-toggle="modal" data-bs-target="#create-proyect-modal" style="border:none;background-color:transparent;padding-left: 5px;" (click)="vaciar()" *ngIf="isUserLogged"><i class="fa-regular fa-plus"></i></button></h2>
     <div class="card w-75 mb-5 proyect-card" *ngFor="let proyect of proyects">
       <div class="card-body">
         <div class="content">
@@ -9,16 +9,16 @@
         </div>
         <div class="proyects-buttons">
           <div>
-            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-proyect-modal{{proyect.id}}" (click)="modificar(proyect.id)"><i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#edit-proyect-modal{{proyect.id}}" (click)="modificar(proyect.id)"  *ngIf="isUserLogged"><i class="fa-regular fa-pen-to-square"></i></button>
           </div>
           <div>
-            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-proyect-modal{{proyect.id}}"><i class="fa-regular fa-trash-can"></i></button>
+            <button class="animated" type="button" data-bs-toggle="modal" attr.data-bs-target="#delete-proyect-modal{{proyect.id}}" *ngIf="isUserLogged"><i class="fa-regular fa-trash-can"></i></button>
           </div>
         </div>
       </div>
 
       <!-- MODAL -->
-      <div class="modal fade" id="edit-proyect-modal{{proyect.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="edit-proyect-modal{{proyect.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -42,13 +42,13 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade" id="delete-proyect-modal{{proyect.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="delete-proyect-modal{{proyect.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -59,14 +59,14 @@
               <p>Esto eliminará los datos de {{proyect.name}} permanentemente</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="borrarProyecto(proyect.id)">Confirmar</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade" id="create-proyect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="create-proyect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -88,7 +88,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>

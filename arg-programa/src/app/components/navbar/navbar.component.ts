@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerAboutService } from 'src/app/services/banner-about.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -25,7 +26,7 @@ export class NavbarComponent implements OnInit{
 
   logout(){
     this.autenticacionService.logout();
-    this.recargarDatos();   
+    location.reload();  
     console.log('logout navbar', this.isUserLogged);
   }
 }
