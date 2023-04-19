@@ -13,19 +13,16 @@ export class AutenticacionService {
   login(username: string, password: string): Observable<Boolean>{
     return this.http.post<Boolean>('http://localhost:8080/user/login', { user: username, password: password }).pipe(
      tap((response: Boolean) => { 
-      if (response){localStorage.setItem("auth", "valido"); }     
-      console.log('login ', localStorage.getItem('auth'))
+      if (response){sessionStorage.setItem("auth", "valido"); }     
       })
     );
   }
 
   public logout() {
-    localStorage.removeItem("auth");
-    console.log('logout service ', localStorage.getItem('auth'))
+    sessionStorage.removeItem("auth");
   }
     
   public isUserLogged():boolean {
-    console.log('isUserLogged service ', localStorage.getItem("auth") !== null)
-    return localStorage.getItem("auth") !== null;
+    return sessionStorage.getItem("auth") !== null;
   }
 }

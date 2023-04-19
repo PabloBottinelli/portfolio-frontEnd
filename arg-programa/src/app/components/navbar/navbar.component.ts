@@ -27,6 +27,5 @@ export class NavbarComponent implements OnInit{
   logout(){
     this.autenticacionService.logout();
     location.reload();  
-    console.log('logout navbar', this.isUserLogged);
   }
 }

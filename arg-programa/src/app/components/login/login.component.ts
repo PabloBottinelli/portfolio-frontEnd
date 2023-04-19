@@ -20,9 +20,7 @@ export class LoginComponent {
   }
 
   ngOnInit(): void {
-    console.log('init ', this.isUserLogged);
     this.isUserLogged = this.autenticacionService.isUserLogged();
-    console.log('isUserLogged init ', this.isUserLogged);
   }
 
   get Username(){
@@ -37,6 +35,5 @@ export class LoginComponent {
     this.autenticacionService.login(this.Username?.value, this.Password?.value).subscribe(data => {
       location.reload();
     });
-    console.log('login ', this.isUserLogged);
   }
 }
