@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
@@ -18,12 +18,28 @@ export class ExperienceComponent implements OnInit{
     this.editarExperiencia=this.formBuilder.group(
       {
         id:[''],
-        company:[''],
-        img:[''],
-        post:[''],
-        dates:['']
+        company:['', [Validators.required]],
+        img:['', [Validators.required]],
+        post:['', [Validators.required]],
+        dates:['', [Validators.required]]
       }
     )
+  }
+
+  get Company(){
+    return this.editarExperiencia.get('company');
+  }
+  
+  get Img(){
+    return this.editarExperiencia.get('img');
+  }
+
+  get Post(){
+    return this.editarExperiencia.get('post');
+  }
+
+  get Dates(){
+    return this.editarExperiencia.get('dates');
   }
 
   recargarDatos() {

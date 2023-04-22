@@ -1,7 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsService } from 'src/app/services/skills.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { AbstractControl } from '@angular/forms';
+
+function esPorcentaje(control: AbstractControl): { [key: string]: any } | null {
+  for(let i = 0; i<=100 ; i++){
+    let porcentaje = (i + '%').toString();
+    if(control.value == porcentaje){
+      return { invalid: true };
+    }
+  }
+  return null;
+}
+
+function esClaseBoot(control: AbstractControl): { [key: string]: any } | null {
+  switch (control.value) {
+    case 'bg-success':
+      return { invalid: true };
+    case 'bg-warning':
+      return { invalid: true };
+    case 'azul':
+      return { invalid: true };
+    case 'bg-danger':
+      return { invalid: true };
+    case '':
+      return { invalid: true };
+    default:
+      return null;
+  }
+}
 
 @Component({
   selector: 'app-skills',
@@ -17,12 +45,24 @@ export class SkillsComponent implements OnInit{
     this.editarSkill=this.formBuilder.group(
       {
         id:[''],
-        name:[''],
-        width:[''],
-        color:['']
+        name:['', [Validators.required]],
+        width:['', [Validators.required, esPorcentaje]],
+        color:['', [Validators.required, esClaseBoot]]
       }
     )
   } 
+
+  get Name(){
+    return this.editarSkill.get('name');
+  }
+
+  get Width(){
+    return this.editarSkill.get('width');
+  }
+
+  get Color(){
+    return this.editarSkill.get('color');
+  }
 
   recargarDatos() {
     this.datosSkills.obtenerDatos().subscribe(data => {

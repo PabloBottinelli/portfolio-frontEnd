@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerAboutService } from 'src/app/services/banner-about.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class AboutComponent implements OnInit{
         banner_img:[''],
         linkedin:[''],
         instagram:[''],
-        about:['']
+        about:['', [Validators.required, Validators.minLength(50)]]
       }
     )
   }
@@ -38,6 +38,10 @@ export class AboutComponent implements OnInit{
 
   ngOnInit(): void {
     this.recargarDatos();   
+  }
+
+  get About(){
+    return this.editarAbout.get('about');
   }
 
   modificar() {

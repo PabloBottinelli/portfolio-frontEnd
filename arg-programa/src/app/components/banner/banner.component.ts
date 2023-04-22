@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerAboutService } from 'src/app/services/banner-about.service';
 import { EducationService } from 'src/app/services/education.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
@@ -20,13 +20,13 @@ export class BannerComponent implements OnInit{
     this.editarBanner=this.formBuilder.group(
       {
         id:[''],
-        name:[''],
-        address:[''],
-        post:[''],
-        profile_img:[''],
-        banner_img:[''],
-        linkedin:[''],
-        instagram:[''],
+        name:['', [Validators.required]],
+        address:['', [Validators.required]],
+        post:['', [Validators.required]],
+        profile_img:['', [Validators.required]],
+        banner_img:['', [Validators.required]],
+        linkedin:['', [Validators.required]],
+        instagram:['', [Validators.required]],
         about:['']
       }
     )
@@ -44,6 +44,34 @@ export class BannerComponent implements OnInit{
 
   ngOnInit(): void {
     this.recargarDatos();   
+  }
+
+  get Name(){
+    return this.editarBanner.get('name');
+  }
+
+  get Address(){
+    return this.editarBanner.get('address');
+  }
+
+  get Post(){
+    return this.editarBanner.get('post');
+  }
+
+  get Profile_img(){
+    return this.editarBanner.get('profile_img');
+  }
+
+  get Banner_img(){
+    return this.editarBanner.get('banner_img');
+  }
+
+  get Linkedin(){
+    return this.editarBanner.get('linkedin');
+  }
+
+  get Instagram(){
+    return this.editarBanner.get('instagram');
   }
 
   modificar() {

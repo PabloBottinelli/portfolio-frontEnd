@@ -35,16 +35,28 @@
                   <input type="hidden" formControlName="id">
 
                   <label for="company"><strong>Empresa:</strong></label>
-                  <input type="text" name="company" id="company{{exp.id}}" formControlName="company" placeholder="Empresa">
-      
+                  <input type="text" name="company" id="company{{exp.id}}" formControlName="company" placeholder="Empresa" [ngClass]="{'is-invalid': Company?.errors && Company?.touched, 'is-valid': !Company?.errors && Company?.touched}" class="form-control">
+                  <div *ngIf="Company?.errors && Company?.touched">
+                    <p *ngIf="Company?.hasError('required')" class="text-danger">La empresa es requerida</p>
+                  </div>
+
                   <label for="img"><strong>Imagen:</strong></label>
-                  <input type="text" name="img" id="img_exp{{exp.id}}" formControlName="img" placeholder="Imagen">
-                  
+                  <input type="text" name="img" id="img_exp{{exp.id}}" formControlName="img" placeholder="Imagen"[ngClass]="{'is-invalid': Img?.errors && Img?.touched, 'is-valid': !Img?.errors && Img?.touched}" class="form-control">
+                  <div *ngIf="Img?.errors && Img?.touched">
+                    <p *ngIf="Img?.hasError('required')" class="text-danger">La imagen es requerida</p>
+                  </div>
+
                   <label for="post"><strong>Puesto:</strong></label>
-                  <input type="text" name="post" id="post_exp{{exp.id}}" formControlName="post" placeholder="Puesto">
-                  
+                  <input type="text" name="post" id="post_exp{{exp.id}}" formControlName="post" placeholder="Puesto" [ngClass]="{'is-invalid': Post?.errors && Post?.touched, 'is-valid': !Post?.errors && Post?.touched}" class="form-control">
+                  <div *ngIf="Post?.errors && Post?.touched">
+                    <p *ngIf="Post?.hasError('required')" class="text-danger">El puesto es requerido</p>
+                  </div>
+
                   <label for="dates"><strong>Fechas</strong></label>
-                  <input type="text" name="dates" id="dates_exp{{exp.id}}" formControlName="dates" placeholder="Fechas">
+                  <input type="text" name="dates" id="dates_exp{{exp.id}}" formControlName="dates" placeholder="Fechas" [ngClass]="{'is-invalid': Dates?.errors && Dates?.touched, 'is-valid': !Dates?.errors && Dates?.touched}" class="form-control">
+                  <div *ngIf="Dates?.errors && Dates?.touched">
+                    <p *ngIf="Dates?.hasError('required')" class="text-danger">Las fechas son requeridas</p>
+                  </div>
 
                   <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
               </form>
@@ -84,16 +96,28 @@
             <div class="modal-body">
               <form [formGroup]="editarExperiencia" class="edit-form" (ngSubmit)="crearExperiencia(editarExperiencia.value)">
                   <label for="company"><strong>Empresa:</strong></label>
-                  <input type="text" name="company" id="create_company_exp" placeholder="Empresa" formControlName="company">
-      
+                  <input type="text" name="company" id="create_company_exp" placeholder="Empresa" formControlName="company" [ngClass]="{'is-invalid': Company?.errors && Company?.touched, 'is-valid': !Company?.errors && Company?.touched}" class="form-control">
+                  <div *ngIf="Company?.errors && Company?.touched">
+                    <p *ngIf="Company?.hasError('required')" class="text-danger">La empresa es requerida</p>
+                  </div>
+
                   <label for="img"><strong>Imagen:</strong></label>
-                  <input type="text" name="img" id="create_img_exp" placeholder="Imagen" formControlName="img">
-                  
+                  <input type="text" name="img" id="create_img_exp" placeholder="Imagen" formControlName="img" [ngClass]="{'is-invalid': Img?.errors && Img?.touched, 'is-valid': !Img?.errors && Img?.touched}" class="form-control">
+                  <div *ngIf="Img?.errors && Img?.touched">
+                    <p *ngIf="Img?.hasError('required')" class="text-danger">La imagen es requerida</p>
+                  </div>
+
                   <label for="post"><strong>Puesto:</strong></label>
-                  <input type="text" name="post" id="create_post_exp" placeholder="Puesto" formControlName="post">
-                  
+                  <input type="text" name="post" id="create_post_exp" placeholder="Puesto" formControlName="post" [ngClass]="{'is-invalid': Post?.errors && Post?.touched, 'is-valid': !Post?.errors && Post?.touched}" class="form-control">
+                  <div *ngIf="Post?.errors && Post?.touched">
+                    <p *ngIf="Post?.hasError('required')" class="text-danger">El puesto es requerido</p>
+                  </div>
+
                   <label for="dates"><strong>Fechas</strong></label>
-                  <input type="text" name="dates" id="create_dates_exp" placeholder="Fechas" formControlName="dates">
+                  <input type="text" name="dates" id="create_dates_exp" placeholder="Fechas" formControlName="dates" [ngClass]="{'is-invalid': Dates?.errors && Dates?.touched, 'is-valid': !Dates?.errors && Dates?.touched}" class="form-control">
+                  <div *ngIf="Dates?.errors && Dates?.touched">
+                    <p *ngIf="Dates?.hasError('required')" class="text-danger">Las fechas son requeridas</p>
+                  </div>
 
                   <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
               </form>

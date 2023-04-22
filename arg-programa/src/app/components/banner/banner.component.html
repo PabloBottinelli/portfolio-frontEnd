@@ -35,25 +35,46 @@
             <input type="hidden" formControlName="about">
 
             <label for="name"><strong>Nombre:</strong></label>
-            <input type="text" name="name" id="name" placeholder="Nombre" formControlName="name">
+            <input type="text" [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid': !Name?.errors && Name?.touched}" class="form-control" name="name" id="name" placeholder="Nombre" formControlName="name">
+            <div *ngIf="Name?.errors && Name?.touched">
+              <p *ngIf="Name?.hasError('required')" class="text-danger">El nombre es requerido</p>
+            </div>
 
             <label for="address"><strong>Direccion:</strong></label>
-            <input type="text" name="address" id="address" placeholder="Direccion" formControlName="address">
-            
+            <input type="text" name="address" id="address" placeholder="Direccion" formControlName="address" [ngClass]="{'is-invalid': Address?.errors && Address?.touched, 'is-valid': !Address?.errors && Address?.touched}" class="form-control">
+            <div *ngIf="Address?.errors && Address?.touched">
+              <p *ngIf="Address?.hasError('required')" class="text-danger">La dirección es requerida</p>
+            </div>
+
             <label for="post"><strong>Puesto:</strong></label>
-            <input type="text" name="post" id="post"  placeholder="Puesto" formControlName="post">
-            
+            <input type="text" name="post" id="post"  placeholder="Puesto" formControlName="post" [ngClass]="{'is-invalid': Post?.errors && Post?.touched, 'is-valid': !Post?.errors && Post?.touched}" class="form-control">
+            <div *ngIf="Post?.errors && Post?.touched">
+              <p *ngIf="Post?.hasError('required')" class="text-danger">El puesto es requerido</p>
+            </div>
+
             <label for="profile_img"><strong>Imagen de perfil:</strong></label>
-            <input type="text" name="profile_img" id="profile_img" placeholder="Imagen de perfil" formControlName="profile_img">
-            
+            <input type="text" name="profile_img" id="profile_img" placeholder="Imagen de perfil" formControlName="profile_img" [ngClass]="{'is-invalid': Profile_img?.errors && Profile_img?.touched, 'is-valid': !Profile_img?.errors && Profile_img?.touched}" class="form-control">
+            <div *ngIf="Profile_img?.errors && Profile_img?.touched">
+              <p *ngIf="Profile_img?.hasError('required')" class="text-danger">La imagen de perfil es requerida</p>
+            </div>
+
             <label for="banner_img"><strong>Imagen de banner:</strong></label>
-            <input type="text" name="banner_img" id="banner_img" placeholder="Imagen de banner" formControlName="banner_img">
-            
+            <input type="text" name="banner_img" id="banner_img" placeholder="Imagen de banner" formControlName="banner_img" [ngClass]="{'is-invalid': Banner_img?.errors && Banner_img?.touched, 'is-valid': !Banner_img?.errors && Banner_img?.touched}" class="form-control">
+            <div *ngIf="Banner_img?.errors && Banner_img?.touched">
+              <p *ngIf="Banner_img?.hasError('required')" class="text-danger">La imagen de banner es requerida</p>
+            </div>
+
             <label for="linkedin"><strong>Url de linkedin:</strong></label>
-            <input type="text" name="linkedin" id="linkedin"  placeholder="Url de linkedin" formControlName="linkedin">
-            
+            <input type="text" name="linkedin" id="linkedin"  placeholder="Url de linkedin" formControlName="linkedin" [ngClass]="{'is-invalid': Linkedin?.errors && Linkedin?.touched, 'is-valid': !Linkedin?.errors && Linkedin?.touched}" class="form-control">
+            <div *ngIf="Linkedin?.errors && Linkedin?.touched">
+              <p *ngIf="Linkedin?.hasError('required')" class="text-danger">El linkedin es requerido</p>
+            </div>
+
             <label for="instagram"><strong>Url de instagram:</strong></label>
-            <input type="text" name="instagram" id="instagram"  placeholder="Url de instagram" formControlName="instagram">
+            <input type="text" name="instagram" id="instagram"  placeholder="Url de instagram" formControlName="instagram" [ngClass]="{'is-invalid': Instagram?.errors && Instagram?.touched, 'is-valid': !Instagram?.errors && Instagram?.touched}" class="form-control">
+            <div *ngIf="Instagram?.errors && Instagram?.touched">
+              <p *ngIf="Instagram?.hasError('required')" class="text-danger">El instagram es requerido</p>
+            </div>
 
             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
         </form>

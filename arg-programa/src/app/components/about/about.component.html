@@ -13,8 +13,12 @@
         <div class="modal-body">
           <form [formGroup]='editarAbout' class="edit-form" (ngSubmit)="guardarAbout(editarAbout.value)">
             <label for="about"><strong>Acerca de:</strong></label>
-            <textarea type="textarea" name="about" id="about" placeholder="Acerca de" class="form-control" rows="10" maxlength="2000" formControlName="about"></textarea>
-          
+            <textarea type="textarea" [ngClass]="{'is-invalid': About?.errors && About?.touched, 'is-valid': !About?.errors && About?.touched}" name="about" id="about" placeholder="Acerca de" class="form-control" rows="10" maxlength="2000" formControlName="about"></textarea>
+            <div *ngIf="About?.errors && About?.touched">
+              <p *ngIf="About?.hasError('required')" class="text-danger">El about es requerido</p>
+              <p *ngIf="About?.errors?.['minlength']" class="text-danger">El about debe tener al menos 50 letras</p>
+            </div>
+
             <input type="hidden" formControlName="id">
 
             <input type="hidden" formControlName="name">
@@ -31,7 +35,7 @@
             
             <input type="hidden" formControlName="instagram">
 
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarAbout.valid">Guardar</button>
           </form>
         </div>
         <div class="modal-footer">

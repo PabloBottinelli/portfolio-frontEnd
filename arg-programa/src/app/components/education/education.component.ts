@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EducationService } from 'src/app/services/education.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
@@ -17,13 +17,30 @@ export class EducationComponent implements OnInit{
     this.editarEducacion=this.formBuilder.group(
       {
         id:[''],
-        institution:[''],
-        img:[''],
-        title:[''],
-        dates:['']
+        institution:['', [Validators.required]],
+        img:['', [Validators.required]],
+        title:['', [Validators.required]],
+        dates:['', [Validators.required]]
       }
     )
   }
+
+  get Institution(){
+    return this.editarEducacion.get('institution');
+  }
+
+  get Img(){
+    return this.editarEducacion.get('img');
+  }
+
+  get Title(){
+    return this.editarEducacion.get('title');
+  }
+
+  get Dates(){
+    return this.editarEducacion.get('dates');
+  }
+
   recargarDatos() {
     this.datosEducacion.obtenerDatos().subscribe(data => {
       this.educations=data;

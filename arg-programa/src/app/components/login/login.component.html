@@ -22,7 +22,7 @@
               <p *ngIf="Password?.errors?.['minlength']" class="text-danger">La contraseña debe tener al menos 8 caracteres</p>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Enviar</button>
         </form>
       </div>
       <div class="modal-footer">

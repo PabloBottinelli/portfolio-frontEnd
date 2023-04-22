@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProyectsService } from 'src/app/services/proyects.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
@@ -17,11 +17,23 @@ export class ProyectsComponent implements OnInit{
     this.editarProyecto=this.formBuilder.group(
       {
         id:[''],
-        name:[''],
-        description:[''],
-        link:['']
+        name:['', [Validators.required]],
+        description:['', [Validators.required]],
+        link:['', [Validators.required]]
       }
     )
+  }
+
+  get Name(){
+    return this.editarProyecto.get('name');
+  }
+
+  get Description(){
+    return this.editarProyecto.get('description');
+  }
+
+  get Link(){
+    return this.editarProyecto.get('link');
   }
 
   recargarDatos() {
