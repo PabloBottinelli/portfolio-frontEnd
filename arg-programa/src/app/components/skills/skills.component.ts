@@ -8,26 +8,29 @@ function esPorcentaje(control: AbstractControl): { [key: string]: any } | null {
   for(let i = 0; i<=100 ; i++){
     let porcentaje = (i + '%').toString();
     if(control.value == porcentaje){
-      return { invalid: true };
+      return null;  
     }
   }
-  return null;
+  if(control.value == ''){
+    return null;
+  }
+  return { esPorcentajeInvalido: true };
 }
 
 function esClaseBoot(control: AbstractControl): { [key: string]: any } | null {
   switch (control.value) {
     case 'bg-success':
-      return { invalid: true };
-    case 'bg-warning':
-      return { invalid: true };
-    case 'azul':
-      return { invalid: true };
-    case 'bg-danger':
-      return { invalid: true };
-    case '':
-      return { invalid: true };
-    default:
       return null;
+    case 'bg-warning':
+      return null;
+    case 'azul':
+      return null;
+    case 'bg-danger':
+      return null;
+    case '':
+      return null;
+    default:
+      return { esClaseBootInvalida: true };
   }
 }
 
@@ -47,7 +50,7 @@ export class SkillsComponent implements OnInit{
         id:[''],
         name:['', [Validators.required]],
         width:['', [Validators.required, esPorcentaje]],
-        color:['', [Validators.required, esClaseBoot]]
+        color:['', [esClaseBoot]]
       }
     )
   } 

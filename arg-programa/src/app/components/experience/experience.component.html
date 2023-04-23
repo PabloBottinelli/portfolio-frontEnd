@@ -9,7 +9,7 @@
           <div class="card-body">
             <h5 class="card-title"><strong>{{ exp.post }}</strong></h5>
             <p class="card-text">{{ exp.company }}</p>
-            <p class="card-text"><small class="text-muted">{{ exp.dates }}</small></p>
+            <p class="card-text"><small class="text-muted">{{ exp.desde }} - {{ exp.hasta }}</small></p>
           </div>
         </div>
         <div class="col-md-2 edit-buttons">
@@ -52,10 +52,16 @@
                     <p *ngIf="Post?.hasError('required')" class="text-danger">El puesto es requerido</p>
                   </div>
 
-                  <label for="dates"><strong>Fechas</strong></label>
-                  <input type="text" name="dates" id="dates_exp{{exp.id}}" formControlName="dates" placeholder="Fechas" [ngClass]="{'is-invalid': Dates?.errors && Dates?.touched, 'is-valid': !Dates?.errors && Dates?.touched}" class="form-control">
-                  <div *ngIf="Dates?.errors && Dates?.touched">
-                    <p *ngIf="Dates?.hasError('required')" class="text-danger">Las fechas son requeridas</p>
+                  <label for="desde"><strong>Desde:</strong></label>
+                  <input type="text" name="desde" id="desde_exp{{exp.desde}}" placeholder="Desde" formControlName="desde" [ngClass]="{'is-invalid': Desde?.errors && Desde?.touched, 'is-valid': !Desde?.errors && Desde?.touched}" class="form-control">
+                  <div *ngIf="Desde?.errors && Desde?.touched">
+                    <p *ngIf="Desde?.hasError('required')" class="text-danger">El año de inicio es requerido</p>
+                  </div>
+
+                  <label for="hasta"><strong>Hasta:</strong></label>
+                  <input type="text" name="hasta" id="hasta_exp{{exp.hasta}}" placeholder="Hasta" formControlName="hasta" [ngClass]="{'is-invalid': Hasta?.errors && Hasta?.touched, 'is-valid': !Hasta?.errors && Hasta?.touched}" class="form-control">
+                  <div *ngIf="Hasta?.errors && Hasta?.touched">
+                    <p *ngIf="Hasta?.hasError('required')" class="text-danger">El año de fin es requerido</p>
                   </div>
 
                   <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
@@ -113,10 +119,16 @@
                     <p *ngIf="Post?.hasError('required')" class="text-danger">El puesto es requerido</p>
                   </div>
 
-                  <label for="dates"><strong>Fechas</strong></label>
-                  <input type="text" name="dates" id="create_dates_exp" placeholder="Fechas" formControlName="dates" [ngClass]="{'is-invalid': Dates?.errors && Dates?.touched, 'is-valid': !Dates?.errors && Dates?.touched}" class="form-control">
-                  <div *ngIf="Dates?.errors && Dates?.touched">
-                    <p *ngIf="Dates?.hasError('required')" class="text-danger">Las fechas son requeridas</p>
+                  <label for="desde"><strong>Desde:</strong></label>
+                  <input type="text" name="desde" id="create_desde" placeholder="Desde" formControlName="desde" [ngClass]="{'is-invalid': Desde?.errors && Desde?.touched, 'is-valid': !Desde?.errors && Desde?.touched}" class="form-control">
+                  <div *ngIf="Desde?.errors && Desde?.touched">
+                    <p *ngIf="Desde?.hasError('required')" class="text-danger">El año de inicio es requerido</p>
+                  </div>
+
+                  <label for="hasta"><strong>Hasta:</strong></label>
+                  <input type="text" name="hasta" id="create_hasta" placeholder="Hasta" formControlName="hasta" [ngClass]="{'is-invalid': Hasta?.errors && Hasta?.touched, 'is-valid': !Hasta?.errors && Hasta?.touched}" class="form-control">
+                  <div *ngIf="Hasta?.errors && Hasta?.touched">
+                    <p *ngIf="Hasta?.hasError('required')" class="text-danger">El año de fin es requerido</p>
                   </div>
 
                   <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>

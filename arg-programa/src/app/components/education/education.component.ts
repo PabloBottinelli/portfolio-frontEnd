@@ -20,7 +20,8 @@ export class EducationComponent implements OnInit{
         institution:['', [Validators.required]],
         img:['', [Validators.required]],
         title:['', [Validators.required]],
-        dates:['', [Validators.required]]
+        desde:['', [Validators.required]],
+        hasta:['', [Validators.required]]
       }
     )
   }
@@ -37,8 +38,12 @@ export class EducationComponent implements OnInit{
     return this.editarEducacion.get('title');
   }
 
-  get Dates(){
-    return this.editarEducacion.get('dates');
+  get Desde(){
+    return this.editarEducacion.get('desde');
+  }
+
+  get Hasta(){
+    return this.editarEducacion.get('hasta');
   }
 
   recargarDatos() {
@@ -63,7 +68,8 @@ export class EducationComponent implements OnInit{
       institution:ed.institution,
       img:ed.img,
       title:ed.title,
-      dates:ed.dates
+      desde:ed.desde,
+      hasta:ed.hasta
     })
   }
 
@@ -77,7 +83,8 @@ export class EducationComponent implements OnInit{
       institution: '',
       img: '',
       title: '',
-      dates: ''
+      desde: '',
+      hasta: ''
     })
   }
 

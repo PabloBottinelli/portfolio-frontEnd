@@ -37,14 +37,13 @@
                 <input type="text" name="width" id="width{{skill.id}}" placeholder="Nivel sobre 100" formControlName="width" [ngClass]="{'is-invalid': Width?.errors && Width?.touched, 'is-valid': !Width?.errors && Width?.touched}" class="form-control">
                 <div *ngIf="Width?.errors && Width?.touched">
                   <p *ngIf="Width?.hasError('required')" class="text-danger">El width es requerido</p>
-                  <p *ngIf="Width?.errors?.['esPorcentaje']" class="text-danger">Debe ser formato porcentaje</p>
+                  <p *ngIf="Width?.errors?.['esPorcentajeInvalido']" class="text-danger">Debe ser formato porcentaje</p>
                 </div>
 
                 <label for="color"><strong>Color:</strong></label>
                 <input type="text" name="color" id="color{{skill.id}}" placeholder="Color" formControlName="color" [ngClass]="{'is-invalid': Color?.errors && Color?.touched, 'is-valid': !Color?.errors && Color?.touched}" class="form-control">
                 <div *ngIf="Color?.errors && Color?.touched">
-                  <p *ngIf="Color?.hasError('required')" class="text-danger">El color es requerido</p>
-                  <p *ngIf="Width?.errors?.['esClaseBoot']" class="text-danger">Debe ser una clase válida</p>
+                  <p *ngIf="Color?.errors?.['esClaseBootInvalida']" class="text-danger">Debe ser una clase válida</p>
                 </div>
 
                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
@@ -94,14 +93,13 @@
                 <input type="text" name="width" id="create_width" placeholder="Nivel sobre 100" formControlName="width" [ngClass]="{'is-invalid': Width?.errors && Width?.touched, 'is-valid': !Width?.errors && Width?.touched}" class="form-control">
                 <div *ngIf="Width?.errors && Width?.touched">
                   <p *ngIf="Width?.hasError('required')" class="text-danger">El width es requerido</p>
-                  <p *ngIf="Width?.errors?.['esPorcentaje']" class="text-danger">Debe ser formato porcentaje</p>
+                  <p *ngIf="Width?.errors?.['esPorcentajeInvalido']" class="text-danger">Debe ser formato porcentaje</p>
                 </div>
 
                 <label for="color"><strong>Color:</strong></label>
                 <input type="text" name="color" id="create_color" placeholder="Color" formControlName="color" [ngClass]="{'is-invalid': Color?.errors && Color?.touched, 'is-valid': !Color?.errors && Color?.touched}" class="form-control">
                 <div *ngIf="Color?.errors && Color?.touched">
-                  <p *ngIf="Color?.hasError('required')" class="text-danger">El color es requerido</p>
-                  <p *ngIf="Width?.errors?.['esClaseBoot']" class="text-danger">Debe ser una clase válida</p>
+                  <p *ngIf="Color?.errors?.['esClaseBootInvalida']" class="text-danger">Debe ser una clase válida</p>
                 </div>
 
                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>

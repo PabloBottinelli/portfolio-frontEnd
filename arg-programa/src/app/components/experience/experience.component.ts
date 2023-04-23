@@ -21,7 +21,8 @@ export class ExperienceComponent implements OnInit{
         company:['', [Validators.required]],
         img:['', [Validators.required]],
         post:['', [Validators.required]],
-        dates:['', [Validators.required]]
+        desde:['', [Validators.required]],
+        hasta:['', [Validators.required]]
       }
     )
   }
@@ -38,8 +39,12 @@ export class ExperienceComponent implements OnInit{
     return this.editarExperiencia.get('post');
   }
 
-  get Dates(){
-    return this.editarExperiencia.get('dates');
+  get Desde(){
+    return this.editarExperiencia.get('desde');
+  }
+
+  get Hasta(){
+    return this.editarExperiencia.get('hasta');
   }
 
   recargarDatos() {
@@ -64,7 +69,8 @@ export class ExperienceComponent implements OnInit{
       company:exp.company,
       img:exp.img,
       post:exp.post,
-      dates:exp.dates
+      desde:exp.desde,
+      hasta:exp.hasta
     })
   }
 
@@ -78,7 +84,8 @@ export class ExperienceComponent implements OnInit{
       company: '',
       img: '',
       post: '',
-      dates:''
+      desde:'',
+      hasta: ''
     })
   }
 
