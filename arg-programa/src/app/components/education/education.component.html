@@ -53,18 +53,22 @@
                   </div>
 
                   <label for="desde"><strong>Desde:</strong></label>
-                  <input type="text" name="desde" id="desde_ed{{ed.desde}}" placeholder="Desde" formControlName="desde" [ngClass]="{'is-invalid': Desde?.errors && Desde?.touched, 'is-valid': !Desde?.errors && Desde?.touched}" class="form-control">
+                  <input type="number" name="desde" id="desde_ed{{ed.desde}}" placeholder="Desde" formControlName="desde" [ngClass]="{'is-invalid': Desde?.errors && Desde?.touched, 'is-valid': !Desde?.errors && Desde?.touched}" class="form-control">
                   <div *ngIf="Desde?.errors && Desde?.touched">
                     <p *ngIf="Desde?.hasError('required')" class="text-danger">El año de inicio es requerido</p>
+                    <p *ngIf="Desde?.errors?.['desdeMayorHasta']" class="text-danger">El año de inicio no puede ser mayor al de fin.</p>
+                    <p *ngIf="Desde?.errors?.['mayorAFechaActual']" class="text-danger">El año de inicio no puede ser mayor al actual.</p>
                   </div>
 
                   <label for="hasta"><strong>Hasta:</strong></label>
-                  <input type="text" name="hasta" id="hasta_ed{{ed.hasta}}" placeholder="Hasta" formControlName="hasta" [ngClass]="{'is-invalid': Hasta?.errors && Hasta?.touched, 'is-valid': !Hasta?.errors && Hasta?.touched}" class="form-control">
+                  <input type="number" name="hasta" id="hasta_ed{{ed.hasta}}" placeholder="Hasta" formControlName="hasta" [ngClass]="{'is-invalid': Hasta?.errors && Hasta?.touched, 'is-valid': !Hasta?.errors && Hasta?.touched}" class="form-control">
                   <div *ngIf="Hasta?.errors && Hasta?.touched">
                     <p *ngIf="Hasta?.hasError('required')" class="text-danger">El año de fin es requerido</p>
+                    <p *ngIf="Hasta?.errors?.['hastaMenorDesde']" class="text-danger">El año de fin no puede ser menor al de inicio.</p>
+                    <p *ngIf="Hasta?.errors?.['mayorAFechaActual']" class="text-danger">El año de fin no puede ser mayor al actual.</p>
                   </div>
 
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarEducacion.valid">Guardar</button>
               </form>
             </div>
             <div class="modal-footer">
@@ -120,18 +124,21 @@
                   </div>
 
                   <label for="desde"><strong>Desde:</strong></label>
-                  <input type="text" name="desde" id="create_desde" placeholder="Desde" formControlName="desde" [ngClass]="{'is-invalid': Desde?.errors && Desde?.touched, 'is-valid': !Desde?.errors && Desde?.touched}" class="form-control">
+                  <input type="number" name="desde" id="create_desde_ed" placeholder="Desde" formControlName="desde" [ngClass]="{'is-invalid': Desde?.errors && Desde?.touched, 'is-valid': !Desde?.errors && Desde?.touched}" class="form-control">
                   <div *ngIf="Desde?.errors && Desde?.touched">
                     <p *ngIf="Desde?.hasError('required')" class="text-danger">El año de inicio es requerido</p>
+                    <p *ngIf="Desde?.errors?.['desdeMayorHasta']" class="text-danger">El año de inicio no puede ser mayor al de fin.</p>
                   </div>
 
                   <label for="hasta"><strong>Hasta:</strong></label>
-                  <input type="text" name="hasta" id="create_hasta" placeholder="Hasta" formControlName="hasta" [ngClass]="{'is-invalid': Hasta?.errors && Hasta?.touched, 'is-valid': !Hasta?.errors && Hasta?.touched}" class="form-control">
+                  <input type="number" name="hasta" id="create_hasta_ed" placeholder="Hasta" formControlName="hasta" [ngClass]="{'is-invalid': Hasta?.errors && Hasta?.touched, 'is-valid': !Hasta?.errors && Hasta?.touched}" class="form-control">
                   <div *ngIf="Hasta?.errors && Hasta?.touched">
                     <p *ngIf="Hasta?.hasError('required')" class="text-danger">El año de fin es requerido</p>
+                    <p *ngIf="Hasta?.errors?.['hastaMenorDesde']" class="text-danger">El año de fin no puede ser menor al de inicio.</p>
+                    <p *ngIf="Hasta?.errors?.['mayorAFechaActual']" class="text-danger">El año de fin no puede ser mayor al actual.</p>
                   </div>
 
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Crear</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarEducacion.valid">Crear</button>
               </form>
             </div>
             <div class="modal-footer">

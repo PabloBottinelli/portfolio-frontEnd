@@ -47,7 +47,7 @@
                     <p *ngIf="Link?.hasError('required')" class="text-danger">El link es requerido</p>
                   </div>
 
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarProyecto.valid">Guardar</button>
               </form>
             </div>
             <div class="modal-footer">
@@ -102,7 +102,7 @@
                     <p *ngIf="Link?.hasError('required')" class="text-danger">El link es requerido</p>
                   </div>
 
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarProyecto.valid">Guardar</button>
               </form>
             </div>
             <div class="modal-footer">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { EducationService } from 'src/app/services/education.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
@@ -20,10 +20,45 @@ export class EducationComponent implements OnInit{
         institution:['', [Validators.required]],
         img:['', [Validators.required]],
         title:['', [Validators.required]],
-        desde:['', [Validators.required]],
-        hasta:['', [Validators.required]]
+        desde:['', [Validators.required, this.validarDesde()]],
+        hasta:['', [Validators.required, this.validarHasta()]]
       }
     )
+  }
+
+  validarDesde(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const desde = control.value;
+      const hasta = control.parent?.get('hasta')?.value;
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      if (!hasta) {
+        return null;
+      }
+      if(hasta < desde){
+        return { 'desdeMayorHasta': true };
+      }else if(hasta > currentYear){
+        return { mayorAFechaActual: true }; 
+      }else{
+        return null;
+      }
+    }
+  }
+
+  validarHasta(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const desde = control.parent?.get('desde')?.value;
+      const hasta = control.value;
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      if(hasta < desde) {
+        return { 'hastaMenorDesde': true };
+      }else if(hasta > currentYear){
+        return { mayorAFechaActual: true };            
+      }else{
+        return null;
+      }
+    }
   }
 
   get Institution(){

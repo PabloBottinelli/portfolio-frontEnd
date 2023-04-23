@@ -46,7 +46,7 @@
                   <p *ngIf="Color?.errors?.['esClaseBootInvalida']" class="text-danger">Debe ser una clase válida</p>
                 </div>
 
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarSkill.valid">Guardar</button>
             </form>
           </div>
           <div class="modal-footer">
@@ -102,7 +102,7 @@
                   <p *ngIf="Color?.errors?.['esClaseBootInvalida']" class="text-danger">Debe ser una clase válida</p>
                 </div>
 
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarSkill.valid">Guardar</button>
             </form>
           </div>
           <div class="modal-footer">

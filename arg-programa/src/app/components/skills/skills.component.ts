@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsService } from 'src/app/services/skills.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
-import { AbstractControl } from '@angular/forms';
 
 function esPorcentaje(control: AbstractControl): { [key: string]: any } | null {
   for(let i = 0; i<=100 ; i++){
