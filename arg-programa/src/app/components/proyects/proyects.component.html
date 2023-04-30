@@ -73,41 +73,40 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>   
+    </div>
+    <div class="modal fade" id="create-proyect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Proyecto</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]='editarProyecto' class="edit-form" (ngSubmit)="crearProyecto(editarProyecto.value)">
+                <label for="name"><strong>Nombre del proyecto:</strong></label>
+                <input type="text" name="name" id="create_name_proyect" placeholder="Nombre del proyecto" formControlName="name" [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid': !Name?.errors && Name?.touched}" class="form-control">
+                <div *ngIf="Name?.errors && Name?.touched">
+                  <p *ngIf="Name?.hasError('required')" class="text-danger">El nombre es requerido</p>
+                </div>
 
-      <div class="modal fade" id="create-proyect-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isUserLogged">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Proyecto</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form [formGroup]='editarProyecto' class="edit-form" (ngSubmit)="crearProyecto(editarProyecto.value)">
-                  <label for="name"><strong>Nombre del proyecto:</strong></label>
-                  <input type="text" name="name" id="create_name_proyect" placeholder="Nombre del proyecto" formControlName="name" [ngClass]="{'is-invalid': Name?.errors && Name?.touched, 'is-valid': !Name?.errors && Name?.touched}" class="form-control">
-                  <div *ngIf="Name?.errors && Name?.touched">
-                    <p *ngIf="Name?.hasError('required')" class="text-danger">El nombre es requerido</p>
-                  </div>
+                <label for="description"><strong>Descripción:</strong></label>
+                <input type="text" name="description" id="create_description_proyect" placeholder="Descripcion" formControlName="description" [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid': !Description?.errors && Description?.touched}" class="form-control">
+                <div *ngIf="Description?.errors && Description?.touched">
+                  <p *ngIf="Description?.hasError('required')" class="text-danger">La descripción es requerida</p>
+                </div>
 
-                  <label for="description"><strong>Descripción:</strong></label>
-                  <input type="text" name="description" id="create_description_proyect" placeholder="Descripcion" formControlName="description" [ngClass]="{'is-invalid': Description?.errors && Description?.touched, 'is-valid': !Description?.errors && Description?.touched}" class="form-control">
-                  <div *ngIf="Description?.errors && Description?.touched">
-                    <p *ngIf="Description?.hasError('required')" class="text-danger">La descripción es requerida</p>
-                  </div>
+                <label for="link"><strong>Link:</strong></label>
+                <input type="text" name="link" id="create_link_proyect" placeholder="Link" formControlName="link" [ngClass]="{'is-invalid': Link?.errors && Link?.touched, 'is-valid': !Link?.errors && Link?.touched}" class="form-control">
+                <div *ngIf="Link?.errors && Link?.touched">
+                  <p *ngIf="Link?.hasError('required')" class="text-danger">El link es requerido</p>
+                </div>
 
-                  <label for="link"><strong>Link:</strong></label>
-                  <input type="text" name="link" id="create_link_proyect" placeholder="Link" formControlName="link" [ngClass]="{'is-invalid': Link?.errors && Link?.touched, 'is-valid': !Link?.errors && Link?.touched}" class="form-control">
-                  <div *ngIf="Link?.errors && Link?.touched">
-                    <p *ngIf="Link?.hasError('required')" class="text-danger">El link es requerido</p>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarProyecto.valid">Guardar</button>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-            </div>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="!editarProyecto.valid">Guardar</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
